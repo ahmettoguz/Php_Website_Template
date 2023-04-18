@@ -9,6 +9,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($_POST["opt"] == "create_User")
             echo json_encode(create_User($_POST["name"], $_POST["surname"], $_POST["bdate"], $_POST["age"]));
 
+        // READ
+        elseif ($_POST["opt"] == "read_Specific")
+            echo json_encode(read_Specific($_POST["id"]));
+
         // UPDATE
         elseif ($_POST["opt"] == "updateUser")
             echo json_encode(update_User($_POST["id"], $_POST["name"], $_POST["surname"]));
@@ -36,9 +40,6 @@ elseif ($_SERVER["REQUEST_METHOD"] == "GET") {
 
         elseif ($_GET["opt"] == "read_Joined")
             echo json_encode(read_Joined());
-
-        elseif ($_GET["opt"] == "read_Specific")
-            echo json_encode(read_Specific($_POST["id"]));
 
         // DELETE
         elseif ($_GET["opt"] == "deleteProject")

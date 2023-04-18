@@ -81,12 +81,10 @@ function read_Specific($id)
     global $db;
 
     try {
-        $sql = "select project.id as id, name, description, photo, start_date, end_date,
-        TIMEDIFF(end_date, current_timestamp())  as due, progress, department_id, state_id, state
-        from project 
-        inner join project_state 
-        ON project.state_id = project_state.id
-        where project.id = :id";
+        $sql = "select id, email, name, surname
+        from user
+        where id = :id";
+
         $stmt = $db->prepare($sql);
         $stmt->bindValue(":id", $id, PDO::PARAM_INT);
         $stmt->execute();

@@ -1,0 +1,10 @@
+i {
+  transition: 200ms all ease;
+  cursor: pointer;
+}
+
+i:hover {
+  color: blue;
+  opacity: 1;
+  filter: drop-shadow(7px 5px 2px #4444dd);
+}
