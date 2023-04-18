@@ -2,14 +2,18 @@
 require_once __DIR__ . "/../database/DatabaseConnection.php";
 session_start();
 
-// $str = filter_var($str, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
-
 // CREATE -------------------------------------------------------------------------------------------------------------------
 function create_User($email, $password, $name, $surname)
 {
     // if everyone can create new user so that shouldn't validated.
     validate_Session_Direct_Login();
+
+
+    // html, js injection preventation
+    $email = filter_var($email, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $password = filter_var($password, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $name = filter_var($name, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $surname = filter_var($surname, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
     global $db;
 
@@ -121,21 +125,29 @@ function delete_User($id)
 }
 
 // UPDATE -------------------------------------------------------------------------------------------------------------------
-function update_User($id, $name, $surname)
+function update_User($id, $email, $password, $name, $surname)
 {
     validate_Session_Direct_Login();
+
+    // html, js injection preventation
+    $email = filter_var($email, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $password = filter_var($password, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $name = filter_var($name, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $surname = filter_var($surname, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
     global $db;
 
     try {
         $sql = "update user
-                set name = :name, surname = :surname
+                set email = :email, password = :password, name = :name, surname = :surname
                 where id = :id
         ";
         $stmt = $db->prepare($sql);
         $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+        $stmt->bindValue(":email", $email, PDO::PARAM_STR);
+        $stmt->bindValue(":password", $password, PDO::PARAM_STR);
         $stmt->bindValue(":name", $name, PDO::PARAM_STR);
-        $stmt->bindValue(":surname", $surname, PDO::PARAM_INT);
+        $stmt->bindValue(":surname", $surname, PDO::PARAM_STR);
         $stmt->execute();
         // $updatedRowCount = $stmt->rowCount();
     } catch (PDOException $ex) {

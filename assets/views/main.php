@@ -32,15 +32,20 @@
 <body class="bg-light-subtle">
   <?php
   require_once  __DIR__ . "/../controller/controller.php";
-
-
   validate_Session_Direct_Login();
 
   ?>
   <div class="container">
     <div class="row">
       <div class="col-xl-8 mx-auto">
-        <h1 class="mt-3">Main Content</h1>
+        <div class="row">
+          <div class="col-xl-6">
+            <h1 class="mt-3">Main Content</h1>
+          </div>
+          <div class="col-xl-6 d-flex justify-content-end align-items-center" id="logoutBtn">
+            <button type="button" class="btn btn-outline-danger ">Logout</button>
+          </div>
+        </div>
         <div class="card">
           <h5 class="card-header">App</h5>
           <div class="card-body">
@@ -114,12 +119,12 @@
                 </div>
 
                 <div class="form-floating mb-3">
-                  <input required type="text" class="form-control" id="add_Input_Name" placeholder="email" />
+                  <input required type="text" class="form-control" id="add_Input_Name" placeholder="name" />
                   <label for="add_Input_Name">Name</label>
                 </div>
 
                 <div class="form-floating mb-3">
-                  <input required type="text" class="form-control" id="add_Input_Surname" placeholder="email" />
+                  <input required type="text" class="form-control" id="add_Input_Surname" placeholder="surname" />
                   <label for="add_Input_Surname">Surname</label>
                 </div>
               </div>
@@ -129,6 +134,52 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-primary">Add</button>
+          </div>
+        </form>
+        <!-- *** -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit User Modal -->
+  <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="editModalLabel">Edit User #2</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <!-- *** -->
+        <form action="" id="editUserForm">
+          <div class="modal-body">
+            <div class="row justify-content-center">
+              <div class="col-xl-10">
+                <div class="form-floating mb-3">
+                  <input required type="email" class="form-control" id="edit_Input_Email" placeholder="email" />
+                  <label for="edit_Input_Email">Email address</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                  <input required type="password" class="form-control" id="edit_Input_Password" placeholder="pass" />
+                  <label for="edit_Input_Password">Password</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                  <input required type="text" class="form-control" id="edit_Input_Name" placeholder="name" />
+                  <label for="edit_Input_Name">Name</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                  <input required type="text" class="form-control" id="edit_Input_Surname" placeholder="surname" />
+                  <label for="edit_Input_Surname">Surname</label>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Edit</button>
           </div>
         </form>
         <!-- *** -->
