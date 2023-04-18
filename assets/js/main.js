@@ -1,6 +1,8 @@
 const controllerUrl = "./../controller/controller.php";
 
 $(function () {
+  bindEventsToIcon();
+
   // get all data with ajax
   $.ajax({
     type: "GET",
@@ -14,7 +16,6 @@ $(function () {
       data = JSON.parse(data);
       // display data
       displayTableRows(data);
-      bindEventsToIcon();
     },
 
     beforeSend: function () {
@@ -106,7 +107,7 @@ function bindEventsToIcon() {
         data = JSON.parse(data);
 
         // change modal body
-        $(".modal-body").html(data.name);
+        $("#userModal .modal-body").html(data.name);
       },
 
       beforeSend: function () {
