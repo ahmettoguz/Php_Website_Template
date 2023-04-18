@@ -88,7 +88,7 @@ $(function () {
 
 function bindEventsToIcon() {
   // view specific user icon click event
-  $(".displayIcon").on("click", function (e) {
+  $(document).on("click", ".displayIcon", function () {
     // extract id from class list
     let id = extractId(this);
 
@@ -119,8 +119,8 @@ function bindEventsToIcon() {
     });
   });
 
-  // delete
-  $(".deleteIcon").on("click", function (e) {
+  // delete event
+  $(document).on("click", ".deleteIcon", function () {
     // extract id from class list
     let id = extractId(this);
     let element = $(this);
