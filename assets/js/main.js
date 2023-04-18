@@ -31,11 +31,7 @@ function bindEventsToIcon() {
   // view specific user icon click event
   $(".displayIcon").on("click", function (e) {
     // extract id from class list
-    let id;
-    let classes = $(this).attr("class").split(" ");
-    classes.forEach((cls) => {
-      if (cls.includes("id")) id = cls.split("-")[1];
-    });
+    let id = extractId(this);
 
     // get specific id with ajax
     $.ajax({
@@ -84,4 +80,15 @@ function displayTableRows(data) {
         `;
   });
   $("tbody").append(output);
+}
+
+function extractId(element) {
+  let classes = $(element).attr("class").split(" ");
+  let id;
+
+  classes.forEach((cls) => {
+    if (cls.includes("id")) id = cls.split("-")[1];
+  });
+
+  return id;
 }

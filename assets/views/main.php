@@ -71,7 +71,7 @@
     </div>
   </div>
 
-  <!-- Modal -->
+  <!-- Specific User Modal -->
   <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -89,6 +89,7 @@
       </div>
     </div>
   </div>
+
 </body>
 
 </html>
