@@ -59,6 +59,39 @@ function bindEventsToIcon() {
       },
     });
   });
+
+  // delete
+  $(".deleteIcon").on("click", function (e) {
+    // extract id from class list
+    let id = extractId(this);
+    let element = $(this);
+    console.log(element.parent().parent().remove());
+
+    // delete with ajax
+    $.ajax({
+      type: "GET",
+      url: controllerUrl,
+      async: false,
+      cache: false,
+      data: {
+        opt: "delete_User",
+        id: id,
+      },
+      success: function (data) {
+        if (data) {
+          console.log("deleted successfully.");
+        }
+      },
+
+      beforeSend: function () {
+        // console.log("loading...");
+      },
+
+      error: function (xhr, status, error) {
+        console.log("Error in ajax request : " + error);
+      },
+    });
+  });
 }
 
 function displayTableRows(data) {
@@ -73,7 +106,7 @@ function displayTableRows(data) {
                 <td>${row.Surname}</td>
                 <td>
                     <i class="bi bi-pencil ms-2 opacity-75 updateIcon id-${row.Id}"></i>
-                    <i class="bi bi-trash ms-2 opacity-75 removeIcon id-${row.Id}"></i>
+                    <i class="bi bi-trash ms-2 opacity-75 deleteIcon id-${row.Id}"></i>
                     <i class="bi bi-eye ms-2 opacity-75 displayIcon id-${row.Id}"  data-bs-toggle="modal" data-bs-target="#userModal"></i>
                 </td>
             </tr>

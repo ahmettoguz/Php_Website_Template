@@ -42,7 +42,7 @@ elseif ($_SERVER["REQUEST_METHOD"] == "GET") {
             echo json_encode(read_Joined());
 
         // DELETE
-        elseif ($_GET["opt"] == "deleteProject")
+        elseif ($_GET["opt"] == "delete_User")
             echo json_encode(delete_User($_GET["id"]));
     }
 }
