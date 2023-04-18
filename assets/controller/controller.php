@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST["opt"])) {
         // CREATE
         if ($_POST["opt"] == "create_User")
-            echo json_encode(create_User($_POST["name"], $_POST["surname"], $_POST["bdate"], $_POST["age"]));
+            echo json_encode(create_User($_POST["email"], $_POST["password"], $_POST["name"], $_POST["surname"]));
 
         // READ
         elseif ($_POST["opt"] == "read_Specific")

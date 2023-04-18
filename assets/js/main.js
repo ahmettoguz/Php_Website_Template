@@ -25,6 +25,65 @@ $(function () {
       console.log("Error in ajax request : " + error);
     },
   });
+
+  // add user submission
+  $("#addUserForm").submit(function (e) {
+    e.preventDefault();
+
+    let email = $("#add_Input_Email").val();
+    let password = $("#add_Input_Password").val();
+    let name = $("#add_Input_Name").val();
+    let surname = $("#add_Input_Surname").val();
+
+    let data = {
+      opt: "create_User",
+      email: email,
+      password: password,
+      name: name,
+      surname: surname,
+    };
+
+    $.ajax({
+      type: "POST",
+      url: controllerUrl,
+      async: false,
+      cache: false,
+      data: data,
+      success: function (data) {
+        if (data === false) console.log("cannot add");
+        else {
+          data = JSON.parse(data); // id
+          console.log("added successfully.");
+
+          let output = `
+            <tr>
+                <th scope="row">${data}</th>
+                <td>${email}</td>
+                <td>${name}</td>
+                <td>${surname}</td>
+                <td>
+                    <i class="bi bi-pencil ms-2 opacity-75 updateIcon id-${data}"></i>
+                    <i class="bi bi-trash ms-2 opacity-75 deleteIcon id-${data}"></i>
+                    <i class="bi bi-eye ms-2 opacity-75 displayIcon id-${data}" data-bs-toggle="modal" data-bs-target="#userModal"></i>
+                </td>
+            </tr>
+        `;
+
+          $("tbody").append(output);
+        }
+      },
+
+      beforeSend: function () {
+        // console.log("loading...");
+      },
+
+      error: function (xhr, status, error) {
+        console.log("Error in ajax request : " + error);
+      },
+    });
+
+    // $(this).unbind("submit").submit();
+  });
 });
 
 function bindEventsToIcon() {
@@ -107,7 +166,7 @@ function displayTableRows(data) {
                 <td>
                     <i class="bi bi-pencil ms-2 opacity-75 updateIcon id-${row.Id}"></i>
                     <i class="bi bi-trash ms-2 opacity-75 deleteIcon id-${row.Id}"></i>
-                    <i class="bi bi-eye ms-2 opacity-75 displayIcon id-${row.Id}"  data-bs-toggle="modal" data-bs-target="#userModal"></i>
+                    <i class="bi bi-eye ms-2 opacity-75 displayIcon id-${row.Id}" data-bs-toggle="modal" data-bs-target="#userModal"></i>
                 </td>
             </tr>
         `;

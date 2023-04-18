@@ -6,7 +6,7 @@ session_start();
 
 
 // CREATE -------------------------------------------------------------------------------------------------------------------
-function create_User($name, $surname, $bdate, $age)
+function create_User($email, $password, $name, $surname)
 {
     // if everyone can create new user so that shouldn't validated.
     validate_Session_Direct_Login();
@@ -14,11 +14,12 @@ function create_User($name, $surname, $bdate, $age)
     global $db;
 
     try {
-        $sql = "insert into user (name, surname, bdate, age) values (:name, :surname, :bdate, :age)";
+        $sql = "insert into user (email, password, name, surname) values (:email, :password, :name, :surname)";
         $stmt = $db->prepare($sql);
+        $stmt->bindValue(":email", $email, PDO::PARAM_STR);
+        $stmt->bindValue(":password", $password, PDO::PARAM_STR);
         $stmt->bindValue(":name", $name, PDO::PARAM_STR);
-        $stmt->bindValue(":code", $bdate, PDO::PARAM_STR);
-        $stmt->bindValue(":age", $age, PDO::PARAM_INT);
+        $stmt->bindValue(":surname", $surname, PDO::PARAM_STR);
         $stmt->execute();
         $lastInsertedId = $db->lastInsertId();
     } catch (PDOException $ex) {
@@ -26,7 +27,7 @@ function create_User($name, $surname, $bdate, $age)
         return false;
     }
 
-    return true;
+    return $lastInsertedId;
 }
 
 // READ -------------------------------------------------------------------------------------------------------------------

@@ -61,7 +61,7 @@
               <tbody>
               </tbody>
             </table>
-            <button type="button" class="btn btn-secondary btn-sm">
+            <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#addModal">
               <i class="bi bi-plus-circle" style="font-size: 20px"></i> Add
               New
             </button>
@@ -86,6 +86,52 @@
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary">...</button>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add User Modal -->
+  <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="addModalLabel">Add User</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <!-- *** -->
+        <form action="" id="addUserForm">
+          <div class="modal-body">
+            <div class="row justify-content-center">
+              <div class="col-xl-10">
+                <div class="form-floating mb-3">
+                  <input required type="email" class="form-control" id="add_Input_Email" placeholder="email" />
+                  <label for="add_Input_Email">Email address</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                  <input required type="password" class="form-control" id="add_Input_Password" placeholder="pass" />
+                  <label for="add_Input_Password">Password</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                  <input required type="text" class="form-control" id="add_Input_Name" placeholder="email" />
+                  <label for="add_Input_Name">Name</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                  <input required type="text" class="form-control" id="add_Input_Surname" placeholder="email" />
+                  <label for="add_Input_Surname">Surname</label>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Add</button>
+          </div>
+        </form>
+        <!-- *** -->
       </div>
     </div>
   </div>
