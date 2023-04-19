@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 18, 2023 at 07:52 PM
+-- Generation Time: Apr 19, 2023 at 10:53 AM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `Surname` varchar(32) COLLATE utf8mb4_turkish_ci NOT NULL,
   PRIMARY KEY (`Id`),
   KEY `Email` (`Email`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_turkish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_turkish_ci;
 
 --
 -- Dumping data for table `user`
@@ -47,7 +47,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 INSERT INTO `user` (`Id`, `Email`, `Password`, `Name`, `Surname`) VALUES
 (1, 'ahmet@hotmail.com', 'a2feba65bf7eaa2885f843ec2aeba6b37e4c4302', 'Ahmet', 'Ergin'),
 (2, 'tuna@hotmail.com', 'a2feba65bf7eaa2885f843ec2aeba6b37e4c4302', 'Tuna', 'Ergin'),
-(3, 'zeynep@hotmail.com', 'a2feba65bf7eaa2885f843ec2aeba6b37e4c4302', 'Zeynep', 'Ergin');
+(3, 'zeynep@hotmail.com', 'a2feba65bf7eaa2885f843ec2aeba6b37e4c4302', 'Zeynep', 'Ergin'),
+(4, 'sena@hotmail.com', 'User4321!', 'Sena', 'Ergin');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
