@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . "/sql_functions.php";
-// header("Content-Type: application/json");
+header("Content-Type: application/json");
 
 // POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

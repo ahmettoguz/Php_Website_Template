@@ -1,4 +1,4 @@
-const controllerUrl = "./assets/controller/controller.php";
+const controllerUrl = "./assets/controller/controller";
 
 $(function () {
   // login submission with ajax
@@ -16,7 +16,7 @@ $(function () {
       remember: remember,
     };
     $.post(controllerUrl, data).then(function (data) {
-      if (data == "true") window.location.href = "./assets/views/main.php";
+      if (data == true) window.location.href = "./assets/views/main.php";
     });
 
     // $(this).unbind("submit").submit();

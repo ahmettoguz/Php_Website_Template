@@ -13,7 +13,6 @@ $(function () {
       opt: "read_All",
     },
     success: function (data) {
-      data = JSON.parse(data);
       // display data
       displayTableRows(data);
     },
@@ -55,7 +54,6 @@ function bindEvents() {
       success: function (data) {
         if (data === false) console.log("cannot add");
         else {
-          data = JSON.parse(data); // id
           console.log("added successfully.");
 
           let output = `
@@ -65,7 +63,7 @@ function bindEvents() {
                   <td>${name}</td>
                   <td>${surname}</td>
                   <td>
-                      <i class="bi bi-pencil ms-2 opacity-75 updateIcon id-${data}"></i>
+                      <i class="bi bi-pencil ms-2 opacity-75 updateIcon id-${data}" data-bs-toggle="modal" data-bs-target="#editModal"></i>
                       <i class="bi bi-trash ms-2 opacity-75 deleteIcon id-${data}"></i>
                       <i class="bi bi-eye ms-2 opacity-75 displayIcon id-${data}" data-bs-toggle="modal" data-bs-target="#userModal"></i>
                   </td>
@@ -73,6 +71,8 @@ function bindEvents() {
           `;
 
           $("tbody").append(output);
+
+          $("#addModal").modal('hide');
         }
       },
 
@@ -104,8 +104,6 @@ function bindEvents() {
         id: id,
       },
       success: function (data) {
-        data = JSON.parse(data);
-
         // change modal body
         $("#userModal .modal-body").html(data.name);
       },
@@ -168,8 +166,6 @@ function bindEvents() {
         id: id,
       },
       success: function (data) {
-        data = JSON.parse(data);
-
         // change modal body
         $("#editModal #editModalLabel").html("Edit User #" + data.id);
         $("#editModal #edit_Input_Email").val(data.email);

@@ -31,10 +31,11 @@
 
 <body class="bg-light-subtle">
   <?php
-  require_once  __DIR__ . "/../controller/controller.php";
-  validate_Session_Direct_Login();
+  require_once  __DIR__ . "/../controller/sql_functions.php";
 
+  validate_Session_Direct_Login();
   ?>
+
   <div class="container">
     <div class="row">
       <div class="col-xl-8 mx-auto">

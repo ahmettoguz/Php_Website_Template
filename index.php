@@ -26,10 +26,9 @@
 
 <body>
   <?php
-  require_once  __DIR__ . "/assets/controller/controller.php";
+  require_once  __DIR__ . "/assets/controller/sql_functions.php";
 
   validate_Session_Direct_Main();
-
   ?>
 
   <div class="container">
