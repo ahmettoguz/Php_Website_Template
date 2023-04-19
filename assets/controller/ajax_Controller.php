@@ -9,10 +9,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($_POST["opt"] == "create_User")
             echo json_encode(create_User($_POST["email"], $_POST["password"], $_POST["name"], $_POST["surname"]));
 
-        // READ
-        elseif ($_POST["opt"] == "read_Specific")
-            echo json_encode(read_Specific($_POST["id"]));
-
         // UPDATE
         elseif ($_POST["opt"] == "update_User")
             echo json_encode(update_User($_POST["id"], $_POST["email"], $_POST["password"], $_POST["name"], $_POST["surname"]));
@@ -33,10 +29,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 // GET
 elseif ($_SERVER["REQUEST_METHOD"] == "GET") {
-    // READ
     if (isset($_GET["opt"])) {
+        // READ
         if ($_GET["opt"] == "read_All")
             echo json_encode(read_All());
+
+        // READ
+        elseif ($_GET["opt"] == "read_Specific")
+            echo json_encode(read_Specific($_GET["id"]));
 
         // DELETE
         elseif ($_GET["opt"] == "delete_User")

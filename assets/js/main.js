@@ -72,7 +72,7 @@ function bindEvents() {
 
           $("tbody").append(output);
 
-          $("#addModal").modal('hide');
+          $("#addModal").modal("hide");
         }
       },
 
@@ -95,7 +95,7 @@ function bindEvents() {
 
     // get specific id with ajax
     $.ajax({
-      type: "POST",
+      type: "GET",
       url: controllerUrl,
       async: false,
       cache: false,
@@ -157,7 +157,7 @@ function bindEvents() {
 
     // get specific id with ajax
     $.ajax({
-      type: "POST",
+      type: "GET",
       url: controllerUrl,
       async: false,
       cache: false,
