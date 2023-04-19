@@ -1,4 +1,4 @@
-const controllerUrl = "./../controller/controller.php";
+const controllerUrl = "./../controller/ajax_Controller.php";
 
 $(function () {
   bindEvents();

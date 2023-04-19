@@ -1,4 +1,4 @@
-const controllerUrl = "./assets/controller/controller";
+const controllerUrl = "./assets/controller/ajax_Controller.php";
 
 $(function () {
   // login submission with ajax
